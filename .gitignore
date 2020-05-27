@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Distribution / packaging
-DS Store
+DS.Store
 .Python
 build/
 develop-eggs/
