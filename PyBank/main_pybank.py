@@ -29,7 +29,6 @@ with open(csvpath,'r') as budget_data:
         first_monthly_profit.append(int(row[1]))
         next_month.append(row[0])
         next_monthly_profit.append(int(row[1]))
-    
     first_monthly_profit.pop(len(month_count)-1)
     next_month.pop(0)
     next_monthly_profit.pop(0)
@@ -42,17 +41,8 @@ for change in changes:
 #calculate the average change in profit
 average_change = (round(sum(profit_change) / len(profit_change),2))
 
-
-#find the month with greatest increase and decrease
+#zip profit change by month and find the month with greatest increase and greatest decrease
 change_by_month = zip(next_month,profit_change)
-# print(next_month)
-# print(profit_change)
-# output_file = os.path.join("change_by_month.csv")
-# with open(output_file,"w") as datafile:
-#     writer = csv.writer(datafile)
-#     writer.writerows(change_by_month)
-
-
 for each_change in change_by_month:
     if int(each_change[1]) > greatest_increase:
         greatest_increase = int(each_change[1])
@@ -60,8 +50,6 @@ for each_change in change_by_month:
     elif int(each_change[1]) < greatest_decrease:
         greatest_decrease = int(each_change[1])
         greatest_decrease_month = each_change[0]
-
-
 
 print("""
 Financial Analysis
