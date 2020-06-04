@@ -95,11 +95,12 @@ with open(csvpath,'r') as employee_data:
 new_employee_data = zip(emp_id, first_name, last_name, dob, ssn, state)
 #set variable and path to output new employee data
 output_file = os.path.join("new_employee_data.csv")
-
+#open a new csv file and save the newly formatted employee data as a csv file
 with open(output_file, "w") as new_data:
     writer = csv.writer(new_data)
     #write header row
     writer.writerow(["Emp ID", "First Name", "Last Name", "DOB", "SSN", "State"])
     #write zipped data
     writer.writerows(new_employee_data)
+    new_data.close()
  

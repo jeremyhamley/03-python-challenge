@@ -50,14 +50,29 @@ for each_change in change_by_month:
     elif int(each_change[1]) < greatest_decrease:
         greatest_decrease = int(each_change[1])
         greatest_decrease_month = each_change[0]
-
-print("""
+#open txt file and save the financial analysis
+pybank_analysis = os.path.join("Analysis-PyBank", "PyBank_analysis.txt")
+with open(pybank_analysis,"w") as text_file:
+    text_file.write(f'''   
+    Financial Analysis
+    ----------------------------
+  
+    Total Months: {len(month_count)}
+    Total net Profit: ${net_profit_total}
+    Average Change: ${average_change}
+    Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})
+    Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})
+    ''')
+    text_file.close()
+#print the finacial analysis in the terminal
+print(f'''
 Financial Analysis
 ----------------------------
-""")
-print(f'Total Months: {len(month_count)}')
-print(f'Total net Profit: ${net_profit_total}')
-print(f'Average Change: ${average_change}')
-print(f'Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})')
-print(f'Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})')
-print(" ")
+
+Total Months: {len(month_count)}
+Total net Profit: ${net_profit_total}
+Average Change: ${average_change}
+Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})
+Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})
+
+''')

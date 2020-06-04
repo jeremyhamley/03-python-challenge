@@ -62,18 +62,34 @@ if cand3_percentage > cand1_percentage and cand2_percentage and cand4_percentage
     winner = cand3
 if cand4_percentage > cand1_percentage and cand2_percentage and cand3_percentage:
     winner = cand4
-
-
-print("""
-Election Results
-----------------------------""")
-print(f'Total Votes: {len(voter_count)}')
-print('----------------------------')
-print(f'{cand1}: {cand1_percentage}% ({cand1_count})')
-print(f'{cand2}: {cand2_percentage}% ({cand2_count}) ')
-print(f'{cand3}: {cand3_percentage}% ({cand3_count}) ')
-print(f'{cand4}: {cand4_percentage}% ({cand4_count}) ')
-print('----------------------------')
-print(f'Winner: {winner}')
-print('----------------------------')
-print(" ")
+#open txt file and save the analysis of the Poll data
+pypoll_analysis = os.path.join("Analysis-PyPoll", "PyPoll_analysis.txt")
+with open(pypoll_analysis,"w") as text_file:
+    text_file.write(f'''
+        Election Results
+        ----------------------------
+        Total Votes: {len(voter_count)}
+        ----------------------------
+        {cand1}: {cand1_percentage}% ({cand1_count})
+        {cand2}: {cand2_percentage}% ({cand2_count})
+        {cand3}: {cand3_percentage}% ({cand3_count})
+        {cand4}: {cand4_percentage}% ({cand4_count})
+        ----------------------------
+        Winner: {winner}
+        ----------------------------
+        ''')
+    text_file.close()
+#print the analysis of the Poll data in the terminal
+print(f'''
+    Election Results
+    ----------------------------
+    Total Votes: {len(voter_count)}
+    ----------------------------
+    {cand1}: {cand1_percentage}% ({cand1_count})
+    {cand2}: {cand2_percentage}% ({cand2_count})
+    {cand3}: {cand3_percentage}% ({cand3_count})
+    {cand4}: {cand4_percentage}% ({cand4_count})
+    ----------------------------
+    Winner: {winner}')
+    ----------------------------
+    ''')
